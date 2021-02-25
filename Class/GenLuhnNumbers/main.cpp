@@ -26,7 +26,7 @@ int main(int argc, char** argv) {
     srand(static_cast<unsigned int>(time(0)));
     
     //Set the Credit Card size
-    const int SIZE=12;
+    const int SIZE=17;
     char crdCard[SIZE];
     //Prepare for Luhn encoding
     cout<<"A random number created in Prep for Luhn Digit"<<endl;

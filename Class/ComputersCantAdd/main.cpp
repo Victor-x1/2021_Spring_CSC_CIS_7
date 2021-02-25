@@ -1,14 +1,13 @@
 /* 
  * File:   main.cpp
  * Author: Dr. Mark E. Lehr
- * Created on February 19, 2020, 11:51 AM
- * Purpose:  Proper way to compare a float
+ * Created on February 24, 2021, 11:51 AM
+ * Purpose:  C++ Template
  */
 
 //System Level Libraries
 #include <iostream>   //I/O Library
 #include <cmath>      //Math Library
-#include <iomanip>    //Formatting Library
 using namespace std;  //Library Scope
 
 //User Libraries
@@ -24,22 +23,26 @@ int main(int argc, char** argv){
     //Set Random Number Seed Here
     
     //Declare Variables - Known and Unknown, units, range, description
-    float x,y,etol;
-    bool equal;
+    float sum,frac,appXact,error;
+    int nLoops;
     
     //Initialize Variables
-    x=3.2e6f;
-    y=3.2000003e6f;
-    etol=pow(10,log10(x)-7);
+    sum=0;
+    frac=0.1f;
+    nLoops=10000000;
     
     //Map inputs to outputs -> i.e. process the inputs
-    equal=abs(x-y)<etol;
+    for(int i=1;i<=nLoops;i++){
+        sum+=frac;
+    }
+    appXact=nLoops*frac;
+    error=(appXact-sum)/appXact*100;
     
     //Display the outputs
-    cout<<fixed<<setprecision(2)<<showpoint;
-    cout<<"x="<<x<<endl;
-    cout<<"y="<<y<<endl;
-    cout<<(equal?"x==y":"x!=y")<<endl;
+    cout<<"The exact sum       = "<<appXact<<endl;
+    cout<<"The approximate sum = "<<sum<<endl;
+    cout<<"The error           = "<<error<<"%"<<endl;
+    
     
     //Clean up - File closing, memory deallocation, etc....
 
